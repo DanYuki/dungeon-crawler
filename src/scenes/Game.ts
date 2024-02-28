@@ -34,7 +34,15 @@ export class Game extends Scene
         // Object Layers
         const skeletonLayer = map.getObjectLayer('Skeletons');
         
+        // Add player
         this.player = this.physics.add.sprite(80, 80, 'player'); 
+        this.anims.create({
+            key: "player-idle-anims",
+            frames: this.anims.generateFrameNames('player-idle', { start: 1, end: 4, prefix: 'player_idle_', suffix:'.png'}),
+            frameRate: 5,
+            repeat: -1,
+        });
+        this.player.play("player-idle-anims");
         
         // Colliders
         this.physics.add.collider(this.player, wallsLayer!);
@@ -74,8 +82,12 @@ export class Game extends Scene
             this.player.setVelocity(0, speed);
         } else if(this.cursors.right.isDown){
             this.player.setVelocity(speed, 0);
+            this.player.scaleX = 1;
+            this.player.body!.offset.x = 0;
         } else if(this.cursors.left.isDown){
             this.player.setVelocity(-speed, 0);
+            this.player.scaleX = -1;
+            this.player.body!.offset.x = 14;
         } else {
             this.player.setVelocity(0, 0);
         }
