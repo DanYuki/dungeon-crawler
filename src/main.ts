@@ -19,6 +19,7 @@ const config: Types.Core.GameConfig = {
         arcade: {
             // @ts-ignore
             gravity: { y: 0 },
+            debug: true
         },
     },
     scale: {

@@ -13,10 +13,12 @@ export class Preloader extends Scene
         this.load.setPath('assets');
 
         // Load the tileset
-        this.load.image('tiles', 'tiles/Dungeon_Tileset.png');
+        this.load.image('dungeon_tiles', 'tiles/Dungeon_Tileset.png');
+        this.load.image('character_tiles', 'tiles/Dungeon_Character.png');
         this.load.tilemapTiledJSON('base-map', 'tiles/maps-01.json');
 
         this.load.image('player', 'player/player.png');
+        this.load.image('skeleton', 'enemies/skeleton.png');
     }
 
     create ()

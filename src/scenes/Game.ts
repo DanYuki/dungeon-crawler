@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import Skeleton from '../enemies/Skeleton';
 
 export class Game extends Scene
 {
@@ -7,6 +8,7 @@ export class Game extends Scene
     msg_text : Phaser.GameObjects.Text;
     player: Phaser.Physics.Arcade.Sprite;
     cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+    skeletons : Phaser.Physics.Arcade.Group;
 
     constructor ()
     {
@@ -21,16 +23,18 @@ export class Game extends Scene
             tileHeight: 16,
             tileWidth: 16,
         });
-        const tileset = map.addTilesetImage('Dungeon_Tileset', 'tiles');
+        const dungeonTileset = map.addTilesetImage('Dungeon_Tileset', 'dungeon_tiles');
+        map.addTilesetImage('Dungeon_Character', 'character_tiles');
 
-        map.createLayer('Ground', tileset!);
-        const wallsLayer = map.createLayer('Wall', tileset!);
+        // Layers
+        map.createLayer('Ground', dungeonTileset!);
+        const wallsLayer = map.createLayer('Wall', dungeonTileset!);
         wallsLayer!.setCollisionByProperty({ collides: true });
 
+        // Object Layers
+        const skeletonLayer = map.getObjectLayer('Skeletons');
+        
         this.player = this.physics.add.sprite(80, 80, 'player'); 
-
-        // Enemies
-        this.physics.add.group
         
         // Colliders
         this.physics.add.collider(this.player, wallsLayer!);
@@ -40,6 +44,23 @@ export class Game extends Scene
 
         // Camera
         this.cameras.main.startFollow(this.player, true);
+
+        // Skeletons
+        this.skeletons = this.physics.add.group({
+            classType: Skeleton
+        });
+
+        // console.dir(map.objects[0].objects);
+        map.objects[0].objects.forEach((skeleton) => {
+            this.skeletons.get(skeleton.x! + skeleton.width! * 0.5, skeleton.y! - skeleton.height! * 0.5, 'skeleton');
+        });
+
+        // skeletonLayer?.objects.forEach((skeleton) => {
+        //     console.dir(skeleton);
+        //     this.skeletons.get(skeleton.x, skeleton.y, 'skeleton');
+        // });
+
+
 
     }
     update(){

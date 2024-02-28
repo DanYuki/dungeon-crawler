@@ -29,9 +29,68 @@
          "width":50,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":3,
+         "name":"Skeletons",
+         "objects":[
+                {
+                 "gid":126,
+                 "height":16,
+                 "id":1,
+                 "name":"Skeleton1",
+                 "rotation":0,
+                 "type":"Skeleton",
+                 "visible":true,
+                 "width":16,
+                 "x":82,
+                 "y":46
+                }, 
+                {
+                 "gid":126,
+                 "height":16,
+                 "id":2,
+                 "name":"Skeleton2",
+                 "rotation":0,
+                 "type":"Skeleton",
+                 "visible":true,
+                 "width":16,
+                 "x":224.5,
+                 "y":287.5
+                }, 
+                {
+                 "gid":126,
+                 "height":16,
+                 "id":6,
+                 "name":"Skeleton3",
+                 "rotation":0,
+                 "type":"Skeleton",
+                 "visible":true,
+                 "width":16,
+                 "x":256.5,
+                 "y":320
+                }, 
+                {
+                 "gid":126,
+                 "height":16,
+                 "id":5,
+                 "name":"Skeleton4",
+                 "rotation":0,
+                 "type":"Skeleton",
+                 "visible":true,
+                 "width":16,
+                 "x":289,
+                 "y":288
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":3,
- "nextobjectid":1,
+ "nextlayerid":4,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -950,6 +1009,19 @@
                          "value":false
                         }]
                 }],
+         "tilewidth":16
+        }, 
+        {
+         "columns":7,
+         "firstgid":101,
+         "image":"Dungeon_Character.png",
+         "imageheight":64,
+         "imagewidth":112,
+         "margin":0,
+         "name":"Dungeon_Character",
+         "spacing":0,
+         "tilecount":28,
+         "tileheight":16,
          "tilewidth":16
         }],
  "tilewidth":16,
