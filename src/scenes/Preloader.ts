@@ -19,6 +19,7 @@ export class Preloader extends Scene
 
         this.load.image('player', 'player/player.png');
         this.load.image('skeleton', 'enemies/skeleton.png');
+        this.load.image('basic-sword', 'weapons/basic-sword.png');
 
         this.load.atlas('player-idle', 'player/player-idle-anims.png','player/player-idle-anims.json');
     }

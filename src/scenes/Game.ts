@@ -32,10 +32,12 @@ export class Game extends Scene
         wallsLayer!.setCollisionByProperty({ collides: true });
 
         // Object Layers
-        const skeletonLayer = map.getObjectLayer('Skeletons');
+        // const skeletonLayer = map.getObjectLayer('Skeletons');
         
         // Add player
         this.player = this.physics.add.sprite(80, 80, 'player'); 
+        // const sword = this.add.image(80, 80, 'basic-sword')
+
         this.anims.create({
             key: "player-idle-anims",
             frames: this.anims.generateFrameNames('player-idle', { start: 1, end: 4, prefix: 'player_idle_', suffix:'.png'}),
@@ -44,8 +46,7 @@ export class Game extends Scene
         });
         this.player.play("player-idle-anims");
         
-        // Colliders
-        this.physics.add.collider(this.player, wallsLayer!);
+        
 
         // Create cursors key
         this.cursors = this.input.keyboard!.createCursorKeys();
@@ -63,6 +64,11 @@ export class Game extends Scene
             this.skeletons.get(skeleton.x! + skeleton.width! * 0.5, skeleton.y! - skeleton.height! * 0.5, 'skeleton');
         });
 
+        // Colliders
+        this.physics.add.collider(this.player, wallsLayer!)
+        this.physics.add.collider(this.skeletons, wallsLayer!)
+        this.physics.add.collider(this.player, this.skeletons, this.handlePlayerSkeletonCollision, null!, this)
+
         // skeletonLayer?.objects.forEach((skeleton) => {
         //     console.dir(skeleton);
         //     this.skeletons.get(skeleton.x, skeleton.y, 'skeleton');
@@ -71,6 +77,14 @@ export class Game extends Scene
 
 
     }
+
+    handlePlayerSkeletonCollision(player: Phaser.Physics.Arcade.Sprite, skeleton: Phaser.Physics.Arcade.Group) {
+        player.setTint(0xff00000)
+        skeleton.setVelocity(0, 0)
+        // console.dir(player)
+        // console.dir(skeleton)
+    }
+
     update(){
         const speed = 100;
         
