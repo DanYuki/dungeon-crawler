@@ -1,0 +1,12 @@
+Phaser + Typescript:
+Dungeon Crawler Summary Notes : 
+
+1. What is container? How do I add different sprites to it? and how to move it? also how to make it collide?
+2. How to implement melee hitbox?
+3. For quick result, let's just stick with ranged attack
+4. Learn how to split each object into each class
+
+Player : 
+- Move with update() function
+- Collide with enemies
+- Throw weapons
